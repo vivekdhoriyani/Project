@@ -183,8 +183,8 @@ This project is licensed under the MIT License.
 ## 👤 Author
 
 Your Name
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+- GitHub: [@vivekdhoriyani](https://github.com/vivekdhoriyani)
+- Email: vivekdhoriyani24@gmail.com
 
 ## 🙏 Acknowledgments
 
@@ -194,7 +194,7 @@ Your Name
 
 ## 📞 Support
 
-For support, email your.email@example.com or open an issue in the repository.
+For support, email vivekdhoriyani@gmail.com or open an issue in the repository.
 
 ---
 
