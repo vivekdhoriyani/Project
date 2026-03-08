@@ -1,0 +1,152 @@
+{
+  "info": {
+    "name": "Property Booking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"user\"\n}"
+            },
+            "url": {"raw": "http://localhost:5000/api/auth/register", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "register"]}
+          }
+        },
+        {
+          "name": "Register Admin",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Admin User\",\n  \"email\": \"admin@example.com\",\n  \"password\": \"admin123\",\n  \"role\": \"admin\"\n}"
+            },
+            "url": {"raw": "http://localhost:5000/api/auth/register", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "register"]}
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {"raw": "http://localhost:5000/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "login"]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Properties",
+      "item": [
+        {
+          "name": "Get All Properties",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:5000/api/properties?page=1&limit=10", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "properties"], "query": [{"key": "page", "value": "1"}, {"key": "limit", "value": "10"}]}
+          }
+        },
+        {
+          "name": "Get Properties with Filters",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:5000/api/properties?location=New York&minPrice=100&maxPrice=500&sort=price_asc", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "properties"], "query": [{"key": "location", "value": "New York"}, {"key": "minPrice", "value": "100"}, {"key": "maxPrice", "value": "500"}, {"key": "sort", "value": "price_asc"}]}
+          }
+        },
+        {
+          "name": "Get Property by ID",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:5000/api/properties/:id", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "properties", ":id"]}
+          }
+        },
+        {
+          "name": "Create Property (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{admin_token}}"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Luxury Villa\",\n  \"description\": \"Beautiful villa with ocean view\",\n  \"price\": 350,\n  \"location\": \"Miami Beach\",\n  \"propertyType\": \"villa\",\n  \"images\": [\"image1.jpg\", \"image2.jpg\"]\n}"
+            },
+            "url": {"raw": "http://localhost:5000/api/properties", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "properties"]}
+          }
+        },
+        {
+          "name": "Update Property (Admin)",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{admin_token}}"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": 400\n}"
+            },
+            "url": {"raw": "http://localhost:5000/api/properties/:id", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "properties", ":id"]}
+          }
+        },
+        {
+          "name": "Delete Property (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [{"key": "Authorization", "value": "Bearer {{admin_token}}"}],
+            "url": {"raw": "http://localhost:5000/api/properties/:id", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "properties", ":id"]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "Create Booking",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{user_token}}"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"propertyId\": \"property_id_here\",\n  \"startDate\": \"2024-06-01\",\n  \"endDate\": \"2024-06-07\"\n}"
+            },
+            "url": {"raw": "http://localhost:5000/api/bookings", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "bookings"]}
+          }
+        },
+        {
+          "name": "Get My Bookings",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{user_token}}"}],
+            "url": {"raw": "http://localhost:5000/api/bookings/my-bookings", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "bookings", "my-bookings"]}
+          }
+        },
+        {
+          "name": "Get All Bookings (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{admin_token}}"}],
+            "url": {"raw": "http://localhost:5000/api/bookings/all", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "bookings", "all"]}
+          }
+        },
+        {
+          "name": "Update Booking Status (Admin)",
+          "request": {
+            "method": "PATCH",
+            "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Authorization", "value": "Bearer {{admin_token}}"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"confirmed\"\n}"
+            },
+            "url": {"raw": "http://localhost:5000/api/bookings/:id/status", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "bookings", ":id", "status"]}
+          }
+        }
+      ]
+    }
+  ]
+}

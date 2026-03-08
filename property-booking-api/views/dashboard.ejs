@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Property Booking</title>
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <h2>Property Booking</h2>
+      <button id="logoutBtn" class="btn-logout">Logout</button>
+    </div>
+  </nav>
+
+  <div class="dashboard-container">
+    <h1>Welcome to Dashboard</h1>
+    <p>You are successfully logged in!</p>
+  </div>
+
+  <script>
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('token');
+      window.location.href = '/login';
+    });
+  </script>
+</body>
+</html>
