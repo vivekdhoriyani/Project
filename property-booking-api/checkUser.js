@@ -20,7 +20,7 @@ const checkAndUpdateUser = async () => {
         console.log('---');
       });
       
-      // Update first user to admin
+    
       const firstUser = allUsers[0];
       if (firstUser.role !== 'admin') {
         firstUser.role = 'admin';
